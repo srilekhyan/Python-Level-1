@@ -1,12 +1,10 @@
-ratings = []
+user_input = input("Enter all ratings separated by spaces: ")
 
-num = int(input("How many ratings? "))
+ratings = list(map(float, user_input.split()))
 
-for i in range(num):
-    rating = float(input("Enter rating: "))
-    ratings.append(rating)
-
-average = sum(ratings) / len(ratings)
-
-print("ratings:", ratings)
-print("average rating:", average)
+if ratings:
+    average = sum(ratings) / len(ratings)
+    print("ratings:", ratings)
+    print("average rating:", average)
+else:
+    print("No ratings were entered.")
