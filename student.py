@@ -1,5 +1,7 @@
 students = []
 tasks = []
+student_counter = 0
+task_counter = 0
 
 while True:
     print("1. Create Student")
@@ -18,7 +20,11 @@ while True:
         grade = input("Enter Grade: ")
         school = input("Enter School: ")
         
-        sid = len(students) + 1
+        student_counter = student_counter + 1
+        sid = student_counter
+        
+        if sid < 100:
+            print("Option: ID has less than 3 characters.")
         
         student = {
             "id": sid, 
@@ -36,7 +42,11 @@ while True:
         priority = input("Enter Priority (low/medium/high): ")
         student_id = int(input("Enter Student ID Number: "))
         
-        tid = len(tasks) + 1
+        task_counter = task_counter + 1
+        tid = task_counter
+        
+        if tid < 100:
+            print("Option: ID has less than 3 characters.")
         
         task = {
             "id": tid, 
@@ -56,57 +66,4 @@ while True:
         found_any = False
         for i in range(len(tasks)):
             task = tasks[i]
-            if task["student_id"] == search_id:
-                print("ID:", task["id"])
-                print("Title:", task["title"])
-                found_any = True
-                
-        if not found_any:
-            print("No tasks found for this student. .")
-            
-    elif choice == 4:
-        search_id = int(input("Enter the task I D Number: "))
-        
-        found = False
-        for i in range(len(tasks)):
-            task = tasks[i]
-            if task["id"] == search_id:
-                print("ID:", task["id"])
-                print("Title:", task["title"])
-                print("Description:", task["description"])
-                print("Priority:", task["priority"])
-                print("Student ID:", task["student_id"])
-                print("Status:", task["status"])
-                found = True
-                
-        if not found:
-            print("Task is not found.")
-            
-    elif choice == 5:
-        print("displaying Completed Tasks:")
-        found_any = False
-        for i in range(len(tasks)):
-            task = tasks[i]
-            if task["status"] == True:
-                print("Task ID:", task["id"], "| Title:", task["title"], "| Student:", task["student_id"])
-                found_any = True
-        if not found_any:
-            print("No completed tasks.")
-            
-    elif choice == 6:
-        print("Displaying Pending Tasks:")
-        found_any = False
-        for i in range(len(tasks)):
-            task = tasks[i]
-            if task["status"] == False:
-                print("Task ID:", task["id"], "| Title:", task["title"], "| Student:", task["student_id"], "| Priority:", task["priority"])
-                found_any = True
-        if not found_any:
-            print("no pending tasks.")
-            
-    elif choice == 7:
-        print("Exiting program.")
-        break
-        
-    else:
-        print("Invalid Option")
+            if task["student_id"] == search_
